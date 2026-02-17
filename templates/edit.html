@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product | G5</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; padding: 50px; text-align: center; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 400px; margin: auto; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .update-btn { width: 100%; background: #3498db; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>পণ্য পরিবর্তন করুন</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- value এর ভেতরে আগের ডাটাগুলো দেওয়া হয়েছে -->
+            <input type="text" name="name" value="{{ product.name }}" required>
+            <input type="number" name="price" value="{{ product.price }}" required>
+            <textarea name="description" rows="3" required>{{ product.description }}</textarea>
+            <button type="submit" class="update-btn">আপডেট করুন</button>
+        </form>
+        <br>
+        <a href="{% url 'home' %}" style="color: #777; text-decoration: none;">বাতিল করুন</a>
+    </div>
+
+</body>
+</html>
