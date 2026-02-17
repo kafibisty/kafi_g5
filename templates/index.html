@@ -26,9 +26,10 @@
 
         /* Owner Profile Card */
         .owner-card { background: white; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 2rem; border-left: 5px solid #2ecc71; }
-        .owner-img-big { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #eee; }
-        .owner-info h3 { color: #2c3e50; font-size: 1.2rem; }
-        .owner-info p { color: #7f8c8d; font-size: 0.9rem; }
+        .owner-img-big { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #eee; }
+        .owner-info h3 { color: #2c3e50; font-size: 1.4rem; margin-bottom: 5px; }
+        .owner-info p { color: #555; font-size: 0.95rem; margin-bottom: 3px; }
+        .owner-info .address-text { color: #7f8c8d; font-size: 0.85rem; display: block; margin-top: 5px; }
 
         /* General Card Style */
         .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 2rem; }
@@ -46,7 +47,8 @@
         td { padding: 15px; border-bottom: 1px solid #eee; }
 
         /* Footer */
-        footer { background: #2c3e50; color: white; text-align: center; padding: 1.5rem 0; margin-top: auto; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem 0; margin-top: auto; }
+        footer .footer-address { font-size: 0.85rem; margin-top: 10px; opacity: 0.8; }
 
         @media (max-width: 600px) {
             .header-container { flex-direction: column; gap: 10px; }
@@ -80,14 +82,15 @@
     </header>
 
     <main>
-        <!-- Owner Profile Section -->
+        <!-- Owner Profile Section with Address -->
         <div class="owner-card">
             <img src="{% static 'images/owner.jpg' %}" alt="Owner Picture" class="owner-img-big">
             <div class="owner-info">
                 <h3>বিচরণ রায় (Bicharan Roy)</h3>
-                <p>চেয়ারম্যান ও প্রতিষ্ঠাতা, G5 Company</p>
-                 <p>mobile:01711075253</p>
-                <p style="font-style: italic; margin-top: 5px;">"আমাদের লক্ষ্য মানসম্মত পণ্য সবার কাছে পৌঁছে দেওয়া।"</p>
+                <p><strong>চেয়ারম্যান ও প্রতিষ্ঠাতা, G5 Company</strong></p>
+                <p class="address-text">📍 <strong>ঠিকানা:</strong> [আপনার গ্রাম/শহর], [আপনার জেলা], বাংলাদেশ।</p>
+                <p class="address-text">📞 <strong>ফোন:</strong> +৮৮০১৭XXXXXXXX</p>
+                <p style="font-style: italic; margin-top: 10px; color: #2ecc71;">"আমাদের লক্ষ্য মানসম্মত পণ্য সবার কাছে পৌঁছে দেওয়া।"</p>
             </div>
         </div>
 
@@ -99,7 +102,7 @@
                 <input type="text" name="name" placeholder="পণ্যের নাম" required>
                 <input type="number" name="price" placeholder="দাম (টাকায়)" required>
                 <textarea name="description" rows="3" placeholder="পণ্যের বিবরণ..." required></textarea>
-                <button type="submit" class="save-btn">পণ্য যোগ করুন</button>
+                <button type="submit" class="save-btn">পণ্যটি ডাটাবেজে যোগ করুন</button>
             </form>
         </div>
 
@@ -129,7 +132,7 @@
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="4" style="text-align: center; color: #999;">কোনো পণ্য পাওয়া যায়নি।</td>
+                            <td colspan="4" style="text-align: center; color: #999;">G5 Company-তে কোনো পণ্য পাওয়া যায়নি।</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -138,9 +141,14 @@
         </div>
     </main>
 
+    <!-- Footer with Company Address -->
     <footer>
         <p>&copy; 2026 G5 Company Product Management System</p>
-        <p>Built with <span style="color:#2ecc71">Python & Django</span> by Kafi</p>
+        <p class="footer-address">
+            📍 প্রধান কার্যালয়: [আপনার সঠিক ঠিকানা এখানে লিখুন] <br>
+            ✉️ ইমেইল: info@g5company.com | 📞 ফোন: +৮৮০১৭XXXXXXXX
+        </p>
+        <p style="margin-top: 15px;">Built with <span style="color:#2ecc71">Python & Django</span> by Kafi</p>
     </footer>
 
 </body>
